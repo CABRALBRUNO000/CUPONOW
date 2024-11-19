@@ -1,0 +1,39 @@
+import os
+from dotenv import load_dotenv
+from langchain_openai import ChatOpenAI
+from langchain.schema import SystemMessage, HumanMessage, AIMessage
+
+load_dotenv()  # Carrega as variáveis de ambiente do arquivo .env
+
+class AIService:
+    def __init__(self):
+        openai_api_key = os.getenv("OPENAI_API_KEY")  # Obtém a chave de API da variável de ambiente
+        self.llm = ChatOpenAI(openai_api_key=openai_api_key)  # Passa a chave de API ao criar a instância do ChatOpenAI   
+        
+    def get_system_prompt(self):
+        return SystemMessage(content="""
+        Você é um assistente especializado em encontrar e recomendar cupons de desconto.
+        Você deve ajudar os usuários a encontrar as melhores ofertas e cupons disponíveis
+        para suas necessidades específicas. Seja sempre prestativo e forneça informações
+        detalhadas sobre os cupons, incluindo valores, validade e condições de uso.
+        """)
+    
+    async def get_response(self, user_message: str, chat_history: list = None):
+        if chat_history is None:
+            chat_history = []
+            
+        messages = [self.get_system_prompt()]
+        
+        # Convert chat history to Langchain message format
+        for msg in chat_history:
+            if msg["role"] == "user":
+                messages.append(HumanMessage(content=msg["content"]))
+            elif msg["role"] == "assistant":
+                messages.append(AIMessage(content=msg["content"]))
+                
+        # Add current user message
+        messages.append(HumanMessage(content=user_message))
+        
+        # Get response from LLM
+        response = await self.llm.agenerate([messages])
+        return response.generations[0][0].text
