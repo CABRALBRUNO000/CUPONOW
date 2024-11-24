@@ -1,12 +1,11 @@
 import streamlit as st
 import asyncio
 from services.ai_service import AIService
-
 # Page Configuration
 st.set_page_config(
     page_title="Cuponow",
     page_icon="🏷️",
-    layout="wide",
+    layout="wide",  # Changed from "wide" to "centered" for better mobile view
     initial_sidebar_state="collapsed"
 )
 
@@ -57,6 +56,48 @@ st.markdown("""
         .custom-button:hover {
             transform: translateY(-1px);
         }
+        
+        /* Add responsive styles */
+        @media screen and (max-width: 768px) {
+            .card {
+                padding: 0.75rem;
+                margin-bottom: 1rem;
+            }
+            
+            .product-card {
+                margin-bottom: 1rem;
+            }
+            
+            /* Adjust header for mobile */
+            h1 {
+                font-size: 2rem !important;
+            }
+            
+            /* Adjust feature cards layout */
+            div[style*="display: flex; align-items: start; gap: 2rem;"] {
+                flex-direction: column;
+            }
+            
+            /* Adjust features container */
+            div[style*="display: flex; gap: 1rem; margin-top: 1.5rem;"] {
+                flex-direction: column;
+            }
+            
+            /* Adjust product grid */
+            .row-widget.stHorizontalBlock {
+                flex-direction: column;
+            }
+            
+            .row-widget.stHorizontalBlock > div {
+                width: 100% !important;
+                margin-bottom: 1rem;
+            }
+            
+            /* Adjust chat column width */
+            [data-testid="column"] {
+                width: 100% !important;
+            }
+        }
     </style>
 """, unsafe_allow_html=True)
 
@@ -69,38 +110,98 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown("""
+    <style>
+        /* Estilos existentes permanecem... */
+        
+        .highlights-section {
+            flex: 1;
+            background: linear-gradient(135deg, #3B82F6, #2563EB);
+            padding: 2rem;
+            border-radius: 12px;
+            color: white;
+            height: 100%;
+            min-width: 250px;
+        }
+        
+        .highlights-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .highlights-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            backdrop-filter: blur(4px);
+        }
+        
+        .highlights-icon {
+            margin-right: 0.75rem;
+            font-size: 1.2rem;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .highlights-section {
+                margin-top: 1rem;
+                padding: 1.5rem;
+            }
+            
+            .highlights-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .highlights-item {
+                margin-bottom: 0.75rem;
+            }
+        }
+    </style>
+
     <div class="card">
-        <div style="display: flex; align-items: start; gap: 2rem;">
-            <div style="flex: 2;">
+        <div style="display: flex; flex-wrap: wrap; gap: 2rem;">
+            <div style="flex: 2; min-width: 300px;">
                 <h2 style="color: #2563EB; margin-bottom: 1rem;">Descubra Ofertas Inteligentes</h2>
                 <p style="color: #64748B; font-size: 1.1rem; line-height: 1.6; margin-bottom: 1rem;">
                     O Cuponow utiliza inteligência artificial para encontrar as melhores ofertas baseadas nas suas preferências. 
                     Nossa tecnologia analisa milhares de produtos em tempo real para trazer descontos exclusivos.
                 </p>
-                <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
-                    <div style="background: #EFF6FF; padding: 1rem; border-radius: 8px; flex: 1;">
+                <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem;">
+                    <div style="background: #EFF6FF; padding: 1rem; border-radius: 8px; flex: 1; min-width: 200px;">
                         <h4 style="color: #2563EB; margin-bottom: 0.5rem;">Ofertas Personalizadas</h4>
                         <p style="color: #64748B; font-size: 0.9rem;">Recomendações baseadas no seu perfil</p>
                     </div>
-                    <div style="background: #EFF6FF; padding: 1rem; border-radius: 8px; flex: 1;">
+                    <div style="background: #EFF6FF; padding: 1rem; border-radius: 8px; flex: 1; min-width: 200px;">
                         <h4 style="color: #2563EB; margin-bottom: 0.5rem;">Economia Real</h4>
                         <p style="color: #64748B; font-size: 0.9rem;">Cupons verificados e atualizados</p>
                     </div>
                 </div>
             </div>
-            <div style="flex: 1; background: linear-gradient(135deg, #3B82F6, #2563EB); padding: 2rem; border-radius: 12px; color: white;">
-                <h3 style="margin-bottom: 1rem;">Destaques</h3>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="margin-bottom: 0.5rem;">✨ Cashback em todas compras</li>
-                    <li style="margin-bottom: 0.5rem;">🔥 Ofertas exclusivas</li>
-                    <li style="margin-bottom: 0.5rem;">🎯 Cupons verificados</li>
-                    <li>⚡ Alertas de preço</li>
-                </ul>
+            <div class="highlights-section">
+                <h3 style="margin-bottom: 1.5rem;">Destaques</h3>
+                <div class="highlights-list">
+                    <div class="highlights-item">
+                        <span class="highlights-icon">🔥</span>
+                        <span>Ofertas exclusivas</span>
+                    </div>
+                    <div class="highlights-item">
+                        <span class="highlights-icon">🎯</span>
+                        <span>Cupons verificados</span>
+                    </div>
+                    <div class="highlights-item">
+                        <span class="highlights-icon">⚡</span>
+                        <span>Alertas de preço</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 """, unsafe_allow_html=True)
-
 # Initialize AI Service
 @st.cache_resource
 def get_ai_service():

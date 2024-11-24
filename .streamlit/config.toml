@@ -3,7 +3,10 @@ primaryColor = "#3B82F6"
 backgroundColor = "#F8FAFC"
 secondaryBackgroundColor = "#FFFFFF"
 textColor = "#1E293B"
-font = "Inter"
+secondaryTextColor = "#64748B"
+tertiaryTextColor = "#2563EB"
+font = "sans serif"
+base = "light"
 
 [browser]
 gatherUsageStats = false
@@ -15,3 +18,7 @@ enableXsrfProtection = false
 [client]
 showErrorDetails = true
 toolbarMode = "minimal"
+
+[ui]
+hideTopBar = true
+hideSidebarNav = true
