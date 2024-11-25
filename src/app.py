@@ -100,12 +100,11 @@ st.markdown("""
         }
     </style>
 """, unsafe_allow_html=True)
-
 # Header
 st.markdown("""
     <div style="text-align: center; padding: 3rem 0;margin-top: -150px;">
-        <h1 style="font-size: 3rem; margin-bottom: 1rem; background: linear-gradient(90deg, #3B82F6, #2563EB); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Cuponow</h1>
-        <p style="color: #64748B; font-size: 1.2rem; max-width: 600px; margin: 0 auto;">Encontre as melhores ofertas de forma inteligente com nossa IA</p>
+        <h1 style="font-size: 4rem; margin-bottom: 1.5rem; background: linear-gradient(90deg, #3B82F6, #2563EB); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Cuponow</h1>
+        <p style="color: #64748B; font-size: 1.5rem; max-width: 600px; margin: 0 auto;">Encontre as melhores ofertas de forma inteligente com nossa IA</p>
     </div>
 """, unsafe_allow_html=True)
 
@@ -166,24 +165,24 @@ st.markdown("""
     <div class="card">
         <div style="display: flex; flex-wrap: wrap; gap: 2rem;">
             <div style="flex: 2; min-width: 300px;">
-                <h2 style="color: #2563EB; margin-bottom: 1rem;">Descubra Ofertas Inteligentes</h2>
+                <h2 style="font-size: 2.5rem; color: #2563EB; margin-bottom: 1.5rem;">Descubra Ofertas Inteligentes</h2>
                 <p style="color: #64748B; font-size: 1.1rem; line-height: 1.6; margin-bottom: 1rem;">
                     O Cuponow utiliza inteligência artificial para encontrar as melhores ofertas baseadas nas suas preferências. 
                     Nossa tecnologia analisa milhares de produtos em tempo real para trazer descontos exclusivos.
                 </p>
                 <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem;">
                     <div style="background: #EFF6FF; padding: 1rem; border-radius: 8px; flex: 1; min-width: 200px;">
-                        <h4 style="color: #2563EB; margin-bottom: 0.5rem;">Ofertas Personalizadas</h4>
+                        <h4 style="font-size: 1.5rem; color: #2563EB; margin-bottom: 1rem;">Ofertas Personalizadas</h4>
                         <p style="color: #64748B; font-size: 0.9rem;">Recomendações baseadas no seu perfil</p>
                     </div>
                     <div style="background: #EFF6FF; padding: 1rem; border-radius: 8px; flex: 1; min-width: 200px;">
-                        <h4 style="color: #2563EB; margin-bottom: 0.5rem;">Economia Real</h4>
+                        <h4 style="font-size: 1.5rem; color: #2563EB; margin-bottom: 1rem;">Economia Real</h4>
                         <p style="color: #64748B; font-size: 0.9rem;">Cupons verificados e atualizados</p>
                     </div>
                 </div>
             </div>
             <div class="highlights-section">
-                <h3 style="margin-bottom: 1.5rem;">Destaques</h3>
+                <h3 style="font-size: 1.8rem; margin-bottom: 1.2rem; color: white;">Destaques</h3>
                 <div class="highlights-list">
                     <div class="highlights-item">
                         <span class="highlights-icon">🔥</span>
@@ -307,3 +306,14 @@ with chat_col:
             for message in reversed(st.session_state.messages):
                 with st.chat_message(message["role"]):
                     st.markdown(message["content"])
+
+st.markdown("""
+    <script type="text/javascript">
+        var lmdimgpixel = document.createElement('img');
+        lmdimgpixel.src = '//secure.lomadee.com/pub.png?pid=23393397';
+        lmdimgpixel.id = 'lmd-verification-pixel-23393397';
+        lmdimgpixel.style = 'display:none';
+        var elmt = document.getElementsByTagName('body')[0];
+        elmt.appendChild(lmdimgpixel);
+    </script>
+""", unsafe_allow_html=True)
