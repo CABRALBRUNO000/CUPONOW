@@ -226,7 +226,7 @@ with products_col:
     """, unsafe_allow_html=True)
     
     if not st.session_state.products:
-        st.info("Inicie uma conversa com o assistente para descobrir ofertas!")
+        st.info("Inicie uma conversa com o assistente para descobrir ofertas!*")
     else:
         # Create rows dynamically based on number of products
         products_per_row = 3
